@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://gafiyij7y1xd"]
+
+[ext_resource type="Script" path="res://Scripts/Items/FishingPole.cs" id="1_b1i0t"]
+[ext_resource type="PackedScene" uid="uid://cej3uol0fscvw" path="res://Scenes/Items/fishingpole.glb" id="1_pppkj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_imaxk"]
+height = 0.895265
+radius = 0.0447376
+
+[node name="FishingPole" type="RigidBody3D"]
+collision_layer = 8
+script = ExtResource("1_b1i0t")
+
+[node name="Imported" parent="." instance=ExtResource("1_pppkj")]
+
+[node name="rod" parent="Imported" index="0"]
+transform = Transform3D(0.0140803, 0, 0, 0, 0.0140803, 0, 0, 0, 0.0140803, 0, 0.0595389, 0.00209409)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43946, 0.0187563)
+shape = SubResource("CylinderShape3D_imaxk")
+
+[editable path="Imported"]

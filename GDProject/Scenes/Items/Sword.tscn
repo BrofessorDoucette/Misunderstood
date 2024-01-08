@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cndqw11oakxgl"]
+
+[ext_resource type="Script" path="res://Scripts/Items/Sword.cs" id="1_7lns8"]
+[ext_resource type="PackedScene" uid="uid://7m0sjf756gev" path="res://Scenes/Items/sword_V2.glb" id="1_fcgkq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crok4"]
+size = Vector3(0.1, 0.837007, 0.0561112)
+
+[node name="Sword" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 8
+script = ExtResource("1_7lns8")
+
+[node name="Imported" parent="." instance=ExtResource("1_fcgkq")]
+
+[node name="Icosphere" parent="Imported" index="0"]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -0.268305, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.420003, 0)
+shape = SubResource("BoxShape3D_crok4")
+
+[editable path="Imported"]

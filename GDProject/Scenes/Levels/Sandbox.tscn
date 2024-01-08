@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=3 uid="uid://dl2wgs02hqu5y"]
+
+[ext_resource type="PackedScene" uid="uid://bwbn42r273jjr" path="res://Scenes/Player/Player.tscn" id="1_bbutg"]
+[ext_resource type="Script" path="res://Scripts/Box.cs" id="1_mu81s"]
+[ext_resource type="PackedScene" uid="uid://da8tu4oxm6eum" path="res://Scenes/UI/HUD/HUD.tscn" id="2_yljj1"]
+[ext_resource type="PackedScene" uid="uid://gafiyij7y1xd" path="res://Scenes/Items/FishingPole.tscn" id="4_bl3js"]
+[ext_resource type="PackedScene" uid="uid://cndqw11oakxgl" path="res://Scenes/Items/Sword.tscn" id="5_rlbjy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1kj3"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.156863, 0.156863, 0.156863, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_reqhp"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.0705882, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vy7fo"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avnmx"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3swi5"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.921569, 0.239216, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lo2cr"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.0862745, 0.439216, 0, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qb75m"]
+
+[sub_resource type="Sky" id="Sky_x0ffe"]
+sky_material = SubResource("ProceduralSkyMaterial_qb75m")
+
+[sub_resource type="Environment" id="Environment_al208"]
+background_mode = 2
+sky = SubResource("Sky_x0ffe")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssao_enabled = true
+glow_enabled = true
+fog_density = 0.0001
+volumetric_fog_density = 0.001
+
+[node name="Root" type="Node3D"]
+
+[node name="Level" type="Node3D" parent="."]
+
+[node name="Floor" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_d1kj3")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="PinkBox" type="CSGBox3D" parent="Level"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 17, 2.5, -18)
+use_collision = true
+collision_layer = 4
+size = Vector3(5, 5, 5)
+material = SubResource("StandardMaterial3D_reqhp")
+script = ExtResource("1_mu81s")
+CharacterName = "PinkBox"
+TotalHealth = 200.0
+Relationship = 2
+
+[node name="BlueBox" type="CSGBox3D" parent="Level"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -9, 1, -7)
+use_collision = true
+collision_layer = 4
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_vy7fo")
+script = ExtResource("1_mu81s")
+CharacterName = "BlueBox"
+Relationship = 0
+
+[node name="GreenBox" type="CSGBox3D" parent="Level"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 24, 5, 21)
+use_collision = true
+collision_layer = 4
+size = Vector3(22, 10, 10)
+material = SubResource("StandardMaterial3D_avnmx")
+script = ExtResource("1_mu81s")
+CharacterName = "GreenBox"
+TotalHealth = 50.0
+
+[node name="WhiteCylinder" type="CSGCylinder3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, 5)
+use_collision = true
+radius = 1.966
+height = 14.652
+
+[node name="OrangeCone" type="CSGCylinder3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -36)
+use_collision = true
+radius = 12.717
+height = 39.658
+sides = 15
+cone = true
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3swi5")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level"]
+transform = Transform3D(0.992789, 0, -0.119877, 0, 1, 0, 0.119877, 0, 0.992789, -10.6487, 0.5, -5.89713)
+use_collision = true
+material = SubResource("StandardMaterial3D_lo2cr")
+
+[node name="PlayerSpawn" type="Node3D" parent="."]
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, 0.290766, -0.815754, 2.41736e-08, 0.941952, 0.335748, 0.866025, -0.167874, 0.470976, 0, 40, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_bbutg")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_al208")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_yljj1")]
+_player = NodePath("../Player")
+
+[node name="FishingPole" parent="." instance=ExtResource("4_bl3js")]
+transform = Transform3D(1, 0, 0, 0, 0.783043, 0.621968, 0, -0.621968, 0.783043, 0, 2.52966, 4.73369)
+mass = 2.0
+
+[node name="Sword" parent="." instance=ExtResource("5_rlbjy")]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 4, 3, 3)
+
+[node name="Sword2" parent="." instance=ExtResource("5_rlbjy")]
+transform = Transform3D(0.637022, 0.317325, 0.702501, -0.0222939, 0.918541, -0.394695, -0.770523, 0.235768, 0.592205, 15.4168, 0.18072, 21.9856)
+collision_mask = 5

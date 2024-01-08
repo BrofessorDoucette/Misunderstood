@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://da8tu4oxm6eum"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_by4ng"]
+[ext_resource type="Texture2D" uid="uid://ctk3vc67k6rbg" path="res://Scenes/UI/HUD/Crosshair/CrossHair_Red.png" id="1_usic5"]
+[ext_resource type="Texture2D" uid="uid://cfwk7k1jscyqn" path="res://Scenes/UI/HUD/Crosshair/CrossHair_Green.png" id="1_x0xbd"]
+[ext_resource type="Texture2D" uid="uid://bvflh7q3lj0us" path="res://Scenes/UI/HUD/Crosshair/CrossHair_White.png" id="2_wc8ht"]
+[ext_resource type="LabelSettings" uid="uid://dkoqk7j4oyoi1" path="res://Scenes/UI/HUD/Misc/CrosshairTextSettings.tres" id="5_ufydu"]
+[ext_resource type="StyleBox" uid="uid://b4840uq301aih" path="res://Scenes/UI/HUD/Misc/NpcHealthBackground.tres" id="6_fo81a"]
+[ext_resource type="StyleBox" uid="uid://b6sbjpymwr7lu" path="res://Scenes/UI/HUD/Misc/NpcHealthFill.tres" id="7_hdst6"]
+[ext_resource type="LabelSettings" uid="uid://drttf8ybaxqgu" path="res://Scenes/UI/HUD/Misc/NpcNameSettings.tres" id="8_exrkm"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("_crosshairText", "_crosshair", "_npcName", "_npcHealthBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_by4ng")
+_crosshairText = NodePath("CrosshairText")
+_whiteCrosshair = ExtResource("2_wc8ht")
+_greenCrosshair = ExtResource("1_x0xbd")
+_redCrosshair = ExtResource("1_usic5")
+_crosshair = NodePath("CrossHairContainer/CrossHair")
+_npcName = NodePath("LayoutHorizontal/LayoutVerticalMiddle/NpcName")
+_npcHealthBar = NodePath("LayoutHorizontal/LayoutVerticalMiddle/NpcHealth")
+
+[node name="CrossHairContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CrossHair" type="TextureRect" parent="CrossHairContainer"]
+layout_mode = 2
+texture = ExtResource("2_wc8ht")
+stretch_mode = 3
+
+[node name="CrosshairText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = 20.0
+offset_right = 30.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sword"
+label_settings = ExtResource("5_ufydu")
+
+[node name="LayoutHorizontal" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LayoutVerticalLeft" type="VBoxContainer" parent="LayoutHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LayoutVerticalMiddle" type="VBoxContainer" parent="LayoutHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="TopEmptySpace" type="Control" parent="LayoutHorizontal/LayoutVerticalMiddle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="NpcHealth" type="ProgressBar" parent="LayoutHorizontal/LayoutVerticalMiddle"]
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.25
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_styles/background = ExtResource("6_fo81a")
+theme_override_styles/fill = ExtResource("7_hdst6")
+value = 60.0
+rounded = true
+
+[node name="NpcName" type="Label" parent="LayoutHorizontal/LayoutVerticalMiddle"]
+layout_mode = 2
+text = "Box"
+label_settings = ExtResource("8_exrkm")
+horizontal_alignment = 1
+
+[node name="BottomEmptySpace" type="Control" parent="LayoutHorizontal/LayoutVerticalMiddle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="LayoutVerticalRight" type="VBoxContainer" parent="LayoutHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
