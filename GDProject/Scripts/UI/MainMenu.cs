@@ -30,7 +30,7 @@ public partial class MainMenu : Control
 	
 	private void _on_settings_pressed()
 	{
-		_bootstrap.NetworkManager.Rpc("RpcTest");
+		_bootstrap.NetworkManager.Rpc(nameof(_bootstrap.NetworkManager.RpcTest));
 
 	}
 }
