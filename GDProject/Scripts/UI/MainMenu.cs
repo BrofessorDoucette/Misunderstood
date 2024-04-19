@@ -30,7 +30,8 @@ public partial class MainMenu : Control
 	
 	private void _on_settings_pressed()
 	{
-		GD.Print("Settings Pressed!");
+		_bootstrap.SceneManager.RpcTest();
 		
+
 	}
 }

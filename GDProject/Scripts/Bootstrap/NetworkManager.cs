@@ -10,6 +10,7 @@ public partial class NetworkManager : Node
 	public override void _Ready()
 	{
 		SteamIsInitialized = false;
+		InitializeSteamIfNot();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,13 +56,14 @@ public partial class NetworkManager : Node
 		Multiplayer.MultiplayerPeer = null;
 		
 		var peer = new SteamMultiplayerPeer();
-		var result = peer.ConnectLobby((ulong) lobbyid);
+		peer.ConnectLobby((ulong) lobbyid);
 		Multiplayer.MultiplayerPeer = peer;
 	}
 
 	private void RemoveCallbacks()
 	{
-		
+		Steam.JoinRequested -= OnLobbyJoinRequested;
+		Steam.LobbyJoined -= OnLobbyJoined;
 	}
 
 	public void CreateLobby()
