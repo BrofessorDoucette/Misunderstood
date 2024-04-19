@@ -125,7 +125,7 @@ public partial class NetworkManager : Node
 
 	}
 	
-	[Rpc]
+	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable, TransferChannel = 0)]
 	public void RpcTest()
 	{
 		GD.Print("The server pressed the settings button!");
