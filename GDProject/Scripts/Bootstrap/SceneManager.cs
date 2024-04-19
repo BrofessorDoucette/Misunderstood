@@ -9,11 +9,5 @@ public partial class SceneManager : Node
 	{
 		
 	}
-
-	[Rpc]
-	public void RpcTest()
-	{
-		GD.Print("The server pressed the settings button!");
-	}
 	
 }

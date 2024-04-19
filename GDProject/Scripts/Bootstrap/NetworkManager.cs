@@ -124,4 +124,10 @@ public partial class NetworkManager : Node
 		SetupCallbacks();
 
 	}
+	
+	[Rpc]
+	public void RpcTest()
+	{
+		GD.Print("The server pressed the settings button!");
+	}
 }
