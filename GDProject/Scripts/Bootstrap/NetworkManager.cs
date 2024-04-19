@@ -26,13 +26,37 @@ public partial class NetworkManager : Node
 		GD.Print("Setting up callbacks!");
 
 		Steam.JoinRequested += OnLobbyJoinRequested;
+		Steam.LobbyJoined += OnLobbyJoined;
+	}
+	
+
+	private void OnLobbyJoined(long lobby, long permissions, bool locked, long response)
+	{
+		if (Multiplayer.IsServer())
+		{
+			GD.Print("Created Lobby: " + lobby);
+			
+			Steam.SetLobbyJoinable((ulong) lobby, true);
+			Steam.AllowP2PPacketRelay(true);
+		}
+
+		if (!Multiplayer.IsServer())
+		{
+			GD.Print("Joined Existing Lobby: " + lobby);
+		}
+		
 	}
 
 	private void OnLobbyJoinRequested(long lobbyid, long steamid)
 	{
 		String name = Steam.GetFriendPersonaName((ulong) steamid);
-		GD.Print("Attempted to join " + name + "'s lobby: " + lobbyid);
+		GD.Print("Attempting to join " + name + "'s lobby: " + lobbyid);
 		
+		Multiplayer.MultiplayerPeer = null;
+		
+		var peer = new SteamMultiplayerPeer();
+		var result = peer.ConnectLobby((ulong) lobbyid);
+		Multiplayer.MultiplayerPeer = peer;
 	}
 
 	private void RemoveCallbacks()
@@ -42,7 +66,6 @@ public partial class NetworkManager : Node
 
 	public void CreateLobby()
 	{
-		GD.Print("Creating Lobby!");
 		var peer = new SteamMultiplayerPeer();
 		peer.CreateLobby(SteamMultiplayerPeer.Lobby_type.FriendsOnly, 8);
 		Multiplayer.MultiplayerPeer = peer;
