@@ -10,7 +10,7 @@ public partial class SceneManager : Node
 		
 	}
 
-	[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = false, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+	[Rpc]
 	public void RpcTest()
 	{
 		GD.Print("The server pressed the settings button!");
