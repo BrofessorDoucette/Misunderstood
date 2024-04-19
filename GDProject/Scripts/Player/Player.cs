@@ -54,19 +54,19 @@ public partial class Player : CharacterBody3D
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-    public override void _Ready()
-    {
-        base._Ready();
+	public override void _Ready()
+	{
+		base._Ready();
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_cameraOffsetMultiplier = Mathf.Clamp(_defaultCameraOffsetMultiplier,
 											 _minCameraOffsetMultiplier,
 											  _maxCameraOffsetMultiplier);
 		_camera.Position = _cameraOffset * _cameraOffsetMultiplier;
-    }
+	}
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
 
 		if(Input.IsActionPressed("Dab"))
 		{
@@ -120,17 +120,17 @@ public partial class Player : CharacterBody3D
 
 
    
-    }
+	}
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
 		if(!Input.IsActionPressed("FreeLook")){
 			_cameraPivot.Rotation = new Vector3(Mathf.Clamp(_cameraPivot.Rotation.X, -MathF.PI/2, MathF.PI/2), 0, 0);
 		}
-    }
+	}
 
-    public override void _PhysicsProcess(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
 		Vector3 velocity = Velocity;
 

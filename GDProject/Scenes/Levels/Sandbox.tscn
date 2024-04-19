@@ -54,7 +54,7 @@ volumetric_fog_density = 0.001
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_d1kj3")
 use_collision = true
-size = Vector3(1000, 1, 1000)
+size = Vector3(768, 1, 768)
 
 [node name="PinkBox" type="CSGBox3D" parent="Level"]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 17, 2.5, -18)
@@ -88,10 +88,10 @@ CharacterName = "GreenBox"
 TotalHealth = 50.0
 
 [node name="WhiteCylinder" type="CSGCylinder3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 256, 5)
 use_collision = true
-radius = 1.966
-height = 14.652
+radius = 17.135
+height = 512.0
 
 [node name="OrangeCone" type="CSGCylinder3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -36)
