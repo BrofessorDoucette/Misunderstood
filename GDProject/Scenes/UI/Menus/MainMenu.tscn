@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca6qnscb0us43"]
+
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu.cs" id="1_llque"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llque")
+
+[node name="FullScreen" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="VBoxContainer" parent="FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Middle" type="VBoxContainer" parent="FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TopSpace" type="Label" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+horizontal_alignment = 1
+
+[node name="GameName" type="Label" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "Misunderstood"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SinglePlayer" type="Button" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Single Player"
+
+[node name="Multiplayer" type="Button" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Multiplayer"
+
+[node name="Settings" type="Button" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Settings"
+
+[node name="BottomSpace" type="Label" parent="FullScreen/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Right" type="VBoxContainer" parent="FullScreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="pressed" from="FullScreen/Middle/SinglePlayer" to="." method="_on_single_player_pressed"]
+[connection signal="pressed" from="FullScreen/Middle/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="FullScreen/Middle/Settings" to="." method="_on_settings_pressed"]
