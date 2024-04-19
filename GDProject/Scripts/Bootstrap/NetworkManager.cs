@@ -11,6 +11,7 @@ public partial class NetworkManager : Node
 	{
 		SteamIsInitialized = false;
 		InitializeSteamIfNot();
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
