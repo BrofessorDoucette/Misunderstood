@@ -25,10 +25,14 @@ public partial class NetworkManager : Node
 
 	private void SetupCallbacks()
 	{
-		GD.Print("Setting up callbacks!");
-
 		Steam.JoinRequested += OnLobbyJoinRequested;
 		Steam.LobbyJoined += OnLobbyJoined;
+	}
+	
+	private void RemoveCallbacks()
+	{
+		Steam.JoinRequested -= OnLobbyJoinRequested;
+		Steam.LobbyJoined -= OnLobbyJoined;
 	}
 	
 
@@ -60,12 +64,7 @@ public partial class NetworkManager : Node
 		peer.ConnectLobby((ulong) lobbyid);
 		Multiplayer.MultiplayerPeer = peer;
 	}
-
-	private void RemoveCallbacks()
-	{
-		Steam.JoinRequested -= OnLobbyJoinRequested;
-		Steam.LobbyJoined -= OnLobbyJoined;
-	}
+	
 
 	public void CreateLobby()
 	{
@@ -80,9 +79,9 @@ public partial class NetworkManager : Node
 		if (SteamIsInitialized)
 		{
 			GD.Print("Safely Shutting Down Steam!");
+			RemoveCallbacks();
 			Steam.SteamShutdown();
 			SteamIsInitialized = false;
-			RemoveCallbacks();
 		}
 	}
 	

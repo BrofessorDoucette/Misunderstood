@@ -16,8 +16,8 @@ public partial class MainMenu : Control
 
 	private void _on_single_player_pressed()
 	{
-		GD.Print("Single Player Pressed!");
-		
+		Player player = _bootstrap.SceneManager.AddScene();
+		_bootstrap.UiManager.AddHUD(player);
 	}
 	
 	private void _on_multiplayer_pressed()

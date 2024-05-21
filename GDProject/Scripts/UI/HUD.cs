@@ -38,7 +38,6 @@ public partial class HUD : Control
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		_playerRaycast = _player.CameraRaycast;
 		_crosshair.Texture = _whiteCrosshair;
 	}
 
@@ -100,4 +99,10 @@ public partial class HUD : Control
 
 	}
 
+	public void SetPlayer(Player player)
+	{
+		
+		_player = player;
+		_playerRaycast = player.CameraRaycast;
+	}
 }

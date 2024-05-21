@@ -1,8 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://dl2wgs02hqu5y"]
+[gd_scene load_steps=13 format=3 uid="uid://dl2wgs02hqu5y"]
 
-[ext_resource type="PackedScene" uid="uid://bwbn42r273jjr" path="res://Scenes/Player/Player.tscn" id="1_bbutg"]
 [ext_resource type="Script" path="res://Scripts/Box.cs" id="1_mu81s"]
-[ext_resource type="PackedScene" uid="uid://da8tu4oxm6eum" path="res://Scenes/UI/HUD/HUD.tscn" id="2_yljj1"]
 [ext_resource type="PackedScene" uid="uid://gafiyij7y1xd" path="res://Scenes/Items/FishingPole.tscn" id="4_bl3js"]
 [ext_resource type="PackedScene" uid="uid://cndqw11oakxgl" path="res://Scenes/Items/Sword.tscn" id="5_rlbjy"]
 
@@ -114,13 +112,8 @@ material = SubResource("StandardMaterial3D_lo2cr")
 transform = Transform3D(0.5, 0.290766, -0.815754, 2.41736e-08, 0.941952, 0.335748, 0.866025, -0.167874, 0.470976, 0, 40, 0)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_bbutg")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_al208")
-
-[node name="HUD" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_yljj1")]
-_player = NodePath("../Player")
 
 [node name="FishingPole" parent="." instance=ExtResource("4_bl3js")]
 transform = Transform3D(1, 0, 0, 0, 0.783043, 0.621968, 0, -0.621968, 0.783043, 0, 2.52966, 4.73369)

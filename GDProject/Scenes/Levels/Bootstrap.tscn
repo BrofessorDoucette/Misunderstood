@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqp77ql17uq8j"]
+[gd_scene load_steps=9 format=3 uid="uid://bqp77ql17uq8j"]
 
 [ext_resource type="Script" path="res://Scripts/Bootstrap/Bootstrap.cs" id="1_1yo3b"]
 [ext_resource type="Script" path="res://Scripts/Bootstrap/SceneManager.cs" id="2_bvauo"]
 [ext_resource type="PackedScene" uid="uid://ca6qnscb0us43" path="res://Scenes/UI/Menus/MainMenu.tscn" id="2_vu8np"]
+[ext_resource type="PackedScene" uid="uid://dl2wgs02hqu5y" path="res://Scenes/Levels/Sandbox.tscn" id="3_rn1w5"]
 [ext_resource type="Script" path="res://Scripts/Bootstrap/UIManager.cs" id="3_to3e2"]
+[ext_resource type="PackedScene" uid="uid://bwbn42r273jjr" path="res://Scenes/Player/Player.tscn" id="4_on5cd"]
 [ext_resource type="Script" path="res://Scripts/Bootstrap/NetworkManager.cs" id="5_0fp7w"]
+[ext_resource type="PackedScene" uid="uid://da8tu4oxm6eum" path="res://Scenes/UI/HUD/HUD.tscn" id="5_fi3ke"]
 
 [node name="Bootstrap" type="Node" node_paths=PackedStringArray("SceneManager", "UiManager", "NetworkManager")]
 script = ExtResource("1_1yo3b")
@@ -12,14 +15,17 @@ SceneManager = NodePath("SceneManager")
 UiManager = NodePath("UIManager")
 NetworkManager = NodePath("NetworkManager")
 
-[node name="SceneManager" type="Node" parent="."]
-script = ExtResource("2_bvauo")
-
 [node name="UIManager" type="Node" parent="."]
 script = ExtResource("3_to3e2")
+_hud = ExtResource("5_fi3ke")
 
 [node name="MainMenu" parent="UIManager" node_paths=PackedStringArray("_bootstrap") instance=ExtResource("2_vu8np")]
 _bootstrap = NodePath("../..")
+
+[node name="SceneManager" type="Node" parent="."]
+script = ExtResource("2_bvauo")
+_map1 = ExtResource("3_rn1w5")
+_player = ExtResource("4_on5cd")
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("5_0fp7w")
