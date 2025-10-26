@@ -30,12 +30,12 @@ albedo_color = Color(0.0862745, 0.439216, 0, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qb75m"]
 
-[sub_resource type="Sky" id="Sky_x0ffe"]
+[sub_resource type="Sky" id="Sky_ei1hc"]
 sky_material = SubResource("ProceduralSkyMaterial_qb75m")
 
 [sub_resource type="Environment" id="Environment_al208"]
 background_mode = 2
-sky = SubResource("Sky_x0ffe")
+sky = SubResource("Sky_ei1hc")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 3

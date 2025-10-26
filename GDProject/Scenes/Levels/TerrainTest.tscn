@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://k3wux51qph3e"]
+
+[ext_resource type="PackedScene" uid="uid://bwbn42r273jjr" path="res://Scenes/Player/Player.tscn" id="2_dag7w"]
+[ext_resource type="PackedScene" uid="uid://84hi5j4kbf0b" path="res://Scenes/Items/Ore.tscn" id="7_n05n1"]
+[ext_resource type="ArrayMesh" uid="uid://7slna7uca6qw" path="res://Terrain.mesh" id="8_bancc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5nicp"]
+
+[sub_resource type="Sky" id="Sky_x0ffe"]
+sky_material = SubResource("ProceduralSkyMaterial_5nicp")
+
+[sub_resource type="Environment" id="Environment_b15vl"]
+background_mode = 2
+sky = SubResource("Sky_x0ffe")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 3
+ssao_enabled = true
+glow_enabled = true
+fog_density = 0.0001
+volumetric_fog_density = 0.001
+
+[node name="TerrainTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_b15vl")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, 0.290766, -0.815754, 2.41736e-08, 0.941952, 0.335748, 0.866025, -0.167874, 0.470976, 0, 40, 0)
+light_color = Color(1, 1, 0.945098, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="Player" parent="." instance=ExtResource("2_dag7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.617, 25.9609, -3.55095)
+
+[node name="Ore" parent="." instance=ExtResource("7_n05n1")]
+transform = Transform3D(-0.438779, 0, 0.898595, 0, 1, 0, -0.898595, 0, -0.438779, 80.3326, 2.39664, 20.2481)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = ExtResource("8_bancc")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(0.18637, -0.98248, 0, 0.98248, 0.18637, 0, 0, 0, 1, 146.582, 30.0662, 0)
+operation = 2
+radius = 4.0
+height = 63.1134

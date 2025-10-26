@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://84hi5j4kbf0b"]
+
+[ext_resource type="PackedScene" uid="uid://bdsunsebuw0sk" path="res://Scenes/Items/Ore.glb" id="1_h2qow"]
+
+[node name="Ore" type="Node3D"]
+
+[node name="Ore" parent="." instance=ExtResource("1_h2qow")]

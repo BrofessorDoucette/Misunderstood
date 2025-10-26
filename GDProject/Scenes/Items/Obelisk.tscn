@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bplnj2aaaxajn"]
+
+[ext_resource type="PackedScene" uid="uid://ojodwn2agwar" path="res://Scenes/Items/Obelisk.glb" id="1_p8hqg"]
+
+[node name="Obelisk" type="Node3D"]
+
+[node name="Obelisk2" parent="." instance=ExtResource("1_p8hqg")]

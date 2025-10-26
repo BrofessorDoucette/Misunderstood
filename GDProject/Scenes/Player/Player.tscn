@@ -50,6 +50,7 @@ input_1/auto_advance = false
 input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_25pkx"]
+graph_offset = Vector2(-525.925, -47.9936)
 nodes/Dab/node = SubResource("AnimationNodeAnimation_ods0c")
 nodes/Dab/position = Vector2(100, 300)
 nodes/Dab_Controller/node = SubResource("AnimationNodeOneShot_86wk7")
