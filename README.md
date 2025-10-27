@@ -4,4 +4,14 @@ This was a simple little game I was putting together in C# and Godot with a UI t
 
 # Examples
 
+This is how an enemy looked on this UI:
+
 <img src="Enemy.png" alt="drawing" width="500"/>
+
+This is how a friendly looked on this UI:
+
+<img src="Friend.png" alt="drawing" width="500"/>
+
+This is how items looked on this UI:
+
+<img src="Sword.png" alt="drawing" width="500"/>
